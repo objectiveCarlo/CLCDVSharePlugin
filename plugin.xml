@@ -9,6 +9,7 @@
     <description>Cordova CL Share Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,share</keywords>
+    <repo>git@bitbucket.org:cbation/clcdvshareplugin.git</repo>
 
     <js-module src="www/clsharecdvplugin.js" name="device">
         <clobbers target="clsharecdvplugin" />
