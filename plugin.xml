@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.apache.cordova.device"
+    version="0.2.4">
+    <name>Device</name>
+    <description>Cordova CL Share Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,share</keywords>
+
+    <js-module src="www/clsharecdvplugin.js" name="device">
+        <clobbers target="clsharecdvplugin" />
+    </js-module>
+
+
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CLShareCDVPLugin" >
+                <param name="android-package" value="cl.cordova.plugin.share.CLShareCDVPLugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CLShareCDVPLugin.java" target-dir="cl/cordova/plugin/share" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="CLShareCDVPLugin">
+                <param name="ios-package" value="CLShareCDVPLugin"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CLShareCDVPLugin.h" />
+        <source-file src="src/ios/CLShareCDVPLugin.m" />
+    </platform>
+
+</plugin>
