@@ -25,7 +25,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/CLShareCDVPLugin.java" target-dir="cl/cordova/plugin/share" />
+        <source-file src="src/android/CLShareCDVPLugin.java" target-dir="src/cl/cordova/plugin/share" />
     </platform>
 
     <!-- ios -->
