@@ -63,7 +63,12 @@
 
         <header-file src="src/ios/CLShareCDVPLugin.h" />
         <source-file src="src/ios/CLShareCDVPLugin.m" />
-       
+        <header-file src="src/ios/modules/Share/FacebookModule.h" />
+        <source-file src="src/ios/modules/Share/FacebookModule.m" />
+        <header-file src="src/ios/modules/Share/InstagramModule.h" />
+        <source-file src="src/ios/modules/Share/InstagramModule.m" />
+        <header-file src="src/ios/modules/Share/TwitterModule.h" />
+        <source-file src="src/ios/modules/Share/TwitterModule.m" />
         <!-- system frameworks -->
         <framework src="libsqlite3.dylib" />
         <framework src="Social.framework" weak="true" />
