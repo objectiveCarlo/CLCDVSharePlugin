@@ -1,81 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:rim="http://www.blackberry.com/ns/widgets" id="cl.cordova.plugin.share" version="0.1.1">
+   <name>CLShare</name>
+   <description>Cordova CL Share Plugin</description>
+   <license>Apache 2.0</license>
+   <keywords>cordova,share</keywords>
+   <repo> https://github.com/objectiveCarlo/CLCDVSharePlugin.git </repo>
+   <preference name="APP_ID" value="1393427500898129"/>
+   <preference name="APP_NAME" value="vapedup"/>
+   <js-module src="www/clsharecdvplugin.js" name="clshare">
+      <clobbers target="clsharecdvplugin" />
+   </js-module>
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    xmlns:rim="http://www.blackberry.com/ns/widgets"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cl.cordova.plugin.share"
-    version="0.2.4">
-    <name>Device</name>
-    <description>Cordova CL Share Plugin</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova,share</keywords>
-    <repo>git@bitbucket.org:cbation/clcdvshareplugin.git</repo>
+   <!-- android -->
+   <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+         <feature name="CLShareCDVPLugin">
+            <param name="android-package" value="cl.cordova.plugin.share.CLShareCDVPLugin" />
+         </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/*">
+         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      </config-file>
+      <source-file src="src/android/CLShareCDVPLugin.java" target-dir="src/cl/cordova/plugin/share" />
+   </platform>
 
-
-     <preference name="APP_ID" />
-        <preference name="APP_NAME" />
-        
-    <js-module src="www/clsharecdvplugin.js" name="device">
-        <clobbers target="clsharecdvplugin" />
-    </js-module>
-
-   
-
-
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="CLShareCDVPLugin" >
-                <param name="android-package" value="cl.cordova.plugin.share.CLShareCDVPLugin"/>
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/CLShareCDVPLugin.java" target-dir="src/cl/cordova/plugin/share" />
-    </platform>
-
-    <!-- ios -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="CLShareCDVPLugin">
-                <param name="ios-package" value="CLShareCDVPLugin"/>
-            </feature>
-        </config-file>
-
-
-         <config-file target="*-Info.plist" parent="FacebookAppID">
-            <string>$APP_ID</string>
-        </config-file>
-        
-        <config-file target="*-Info.plist" parent="FacebookDisplayName">
-            <string>$APP_NAME</string>
-        </config-file>
-        
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-          <array>
+   <!-- ios -->
+   <platform name="ios">
+      <config-file target="config.xml" parent="/*">
+         <feature name="CLShareCDVPLugin">
+            <param name="ios-package" value="CLShareCDVPLugin" />
+         </feature>
+      </config-file>
+      <config-file target="*-Info.plist" parent="FacebookAppID">
+         <string>$APP_ID</string>
+      </config-file>
+      <config-file target="*-Info.plist" parent="FacebookDisplayName">
+         <string>$APP_NAME</string>
+      </config-file>
+      <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+         <array>
             <dict>
-              <key>CFBundleURLSchemes</key>
-              <array>
-                <string>fb$APP_ID</string>
-              </array>
+               <key>CFBundleURLSchemes</key>
+               <array>
+                  <string>fb$APP_ID</string>
+               </array>
             </dict>
-          </array>
-        </config-file>
+         </array>
+      </config-file>
 
-        <header-file src="src/ios/CLShareCDVPLugin.h" />
-        <source-file src="src/ios/CLShareCDVPLugin.m" />
-        <header-file src="src/ios/modules/Share/FacebookModule.h" />
-        <source-file src="src/ios/modules/Share/FacebookModule.m" />
-        <header-file src="src/ios/modules/Share/InstagramModule.h" />
-        <source-file src="src/ios/modules/Share/InstagramModule.m" />
-        <header-file src="src/ios/modules/Share/TwitterModule.h" />
-        <source-file src="src/ios/modules/Share/TwitterModule.m" />
-        <!-- system frameworks -->
-        <framework src="libsqlite3.dylib" />
-        <framework src="Social.framework" weak="true" />
-        <framework src="Accounts.framework" weak="true" />
-        <framework src="AdSupport.framework" weak="true" />
-        <framework src="Security.framework" weak="true" />
-        <framework   src="Twitter.framework" weak="true" />
-    </platform>
-
+      <header-file src="src/ios/CLShareCDVPLugin.h" />
+      <source-file src="src/ios/CLShareCDVPLugin.m" />
+      <header-file src="src/ios/modules/Share/FacebookModule.h" />
+      <source-file src="src/ios/modules/Share/FacebookModule.m" />
+      <header-file src="src/ios/modules/Share/InstagramModule.h" />
+      <source-file src="src/ios/modules/Share/InstagramModule.m" />
+      <header-file src="src/ios/modules/Share/TwitterModule.h" />
+      <source-file src="src/ios/modules/Share/TwitterModule.m" />
+      <!-- system frameworks -->
+      <framework src="libsqlite3.dylib" />
+      <framework src="Social.framework" weak="true" />
+      <framework src="Accounts.framework" weak="true" />
+      <framework src="AdSupport.framework" weak="true" />
+      <framework src="Security.framework" weak="true" />
+      <framework src="Twitter.framework" weak="true" />
+   </platform>
 </plugin>
