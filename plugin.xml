@@ -22,11 +22,11 @@
          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
       </config-file>
       <source-file src="src/android/CLShareCDVPLugin.java" target-dir="src/cl/cordova/plugin/share" />
-      <source-file src="src/android/cl/android/share/model/ShareModel.java" target-dir="cl/android/share/model/" />
-      <source-file src="src/android/cl/android/share/module/FacebookModule.java" target-dir="cl/android/share/module/" />
-      <source-file src="src/android/cl/android/share/module/InstagramModule.java" target-dir="cl/android/share/module/" />
-      <source-file src="src/android/cl/android/share/module/ShareModule.java" target-dir="cl/android/share/module/" />
-      <source-file src="src/android/cl/android/share/module/TwitterModule.java" target-dir="cl/android/share/module/" />
+      <source-file src="src/android/cl/android/share/model/ShareModel.java" target-dir="src/cl/android/share/model/" />
+      <source-file src="src/android/cl/android/share/module/FacebookModule.java" target-dir="src/cl/android/share/module/" />
+      <source-file src="src/android/cl/android/share/module/InstagramModule.java" target-dir="src/cl/android/share/module/" />
+      <source-file src="src/android/cl/android/share/module/ShareModule.java" target-dir="src/cl/android/share/module/" />
+      <source-file src="src/android/cl/android/share/module/TwitterModule.java" target-dir="src/cl/android/share/module/" />
    </platform>
 
    <!-- ios -->
