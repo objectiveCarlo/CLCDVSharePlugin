@@ -26,7 +26,7 @@ public class TwitterModule extends ShareModule {
 	
 	public TwitterModule(Activity activity, ShareModel shareModel) {
 		super(activity, shareModel);
-
+		shareModel.isFacebook = false;
 	}
 
 
@@ -50,11 +50,11 @@ public class TwitterModule extends ShareModule {
 	}
 
 	public void share() throws IOException{
-		File imageFile = new File(this.shareModel.image);
+//		File imageFile = new File("http://us.123rf.com/400wm/400/400/snehit/snehit1105/snehit110500001/9435487-an-illustration-of-3d-city-icon-with-colorful-buildings.jpg");
 
 		this.postToTwitter(this.activity.getApplicationContext(), this.activity,
 				this.consumerKey, this.consumerSecretKey,
-				this.shareModel.message+" -"+this.shareModel.link, imageFile, new T4JTwitterFunctions.TwitterPostResponse(){
+				this.shareModel.message+" -"+this.shareModel.link, null, new T4JTwitterFunctions.TwitterPostResponse(){
 			@Override
 			public void OnResult(Boolean success) {
 

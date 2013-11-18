@@ -87,8 +87,8 @@ NSString* kCLShareCDVPLuginTweetKey   = @"tweet";
                               withParamsKey:[NSArray arrayWithObjects:kFacebookModuleParamsURLKey,kFacebookModuleParamsTextKey,kFacebookModuleParamsImageKey, nil]
                           withConcernedKeys:[NSArray arrayWithObjects:kCLShareCDVPLuginLinkKey,kCLShareCDVPLuginMessageKey,kCLShareCDVPLuginImageKey, nil]];
     
-    
-    
+    [params setObject:kFacebookModuleParamsFeedKey forKey:kFacebookModuleParamsFeedKey];
+    [params setObject:kFacebookModuleParamsFeedKey forKey:@"method"];
     if(valid)
     {
         FacebookModule *facebookModule = [FacebookModule shared];
@@ -109,7 +109,7 @@ NSString* kCLShareCDVPLuginTweetKey   = @"tweet";
                 {
                     [facebookModule showDialog:params];
                 }else
-                {   self.currentPrams = params;
+                {   self.currentPrams = [[NSMutableDictionary alloc] initWithDictionary:params];
                     [facebookModule login];
                 }
             }
@@ -133,6 +133,8 @@ NSString* kCLShareCDVPLuginTweetKey   = @"tweet";
     if(valid)
     {
         TwitterModule *twitter = [[TwitterModule alloc] init];
+        twitter.errorMessageTitle = @"Unavailable";
+        twitter.errorMessage = @"Kindly add a twitter account in the settings menu.";
         [twitter composeTweet:params withController:[self controller]];
     
     }
@@ -152,9 +154,9 @@ NSString* kCLShareCDVPLuginTweetKey   = @"tweet";
     
     if(valid)
     {
-        InstagramModule *instagram = [[InstagramModule alloc] init];
-        [instagram setDelegate:self];
-        [instagram shareInstagramWithController:[self controller] withImageName:[params objectForKey:kFacebookModuleParamsImageKey]];
+        self.instagram = [[InstagramModule alloc] init];
+        [self.instagram setDelegate:self];
+        [self.instagram shareInstagramWithController:[self controller] withImageName:[params objectForKey:kFacebookModuleParamsImageKey]];
     }
     
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus: valid ? CDVCommandStatus_OK: CDVCommandStatus_ERROR];

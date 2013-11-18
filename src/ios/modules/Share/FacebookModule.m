@@ -365,8 +365,9 @@ static FacebookModule *_kShared = nil;
 {
   
     NSMutableDictionary *options = [paramsGlobal mutableCopy];
+    NSLog(@"%@",options == nil?@"nil":options);
     NSString* method = [[NSString alloc] initWithString:[options objectForKey:@"method"]];
-    if ([options objectForKey:@"method"]) {
+    if (options&&[options objectForKey:@"method"]) {
         [options removeObjectForKey:@"method"];
     }
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];

@@ -10,7 +10,7 @@
 @protocol InstagramModuleDelegate;
 
 @interface InstagramModule : NSObject<UIDocumentInteractionControllerDelegate>
-
+@property(nonatomic,strong) UIDocumentInteractionController *dic;
 - (void)shareInstagramWithController:(UIViewController *)controller withImageName:(NSString *)imageName;
 
 @property(nonatomic, assign)id<InstagramModuleDelegate>delegate;

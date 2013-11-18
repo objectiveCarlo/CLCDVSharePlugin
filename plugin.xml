@@ -7,7 +7,7 @@
    <repo> https://github.com/objectiveCarlo/CLCDVSharePlugin.git </repo>
   
    <js-module src="www/clsharecdvplugin.js" name="clshare">
-      <clobbers target="clsharecdvplugin" />
+      <clobbers target="CLShare" />
    </js-module>
 
    <!-- android -->

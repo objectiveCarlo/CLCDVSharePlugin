@@ -21,7 +21,7 @@ public class FacebookModule extends ShareModule {
 	
 	public FacebookModule(Activity activity, ShareModel shareModel) {
 		super(activity, shareModel);
-	
+		shareModel.isFacebook = true;
 	}
 
 

@@ -1,25 +1,26 @@
+
 var argscheck = require('cordova/argscheck'),
-    channel = require('cordova/channel'),
-    utils = require('cordova/utils'),
-    exec = require('cordova/exec'),
-    cordova = require('cordova');
-
+               channel = require('cordova/channel'),
+               utils = require('cordova/utils'),
+               exec = require('cordova/exec'),
+               cordova = require('cordova');
+               
 channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
+               
+               // Tell cordova channel to wait on the CordovaInfoReady event
+ channel.waitForInitialization('onCordovaInfoReady');
 
+var CLShareCDVPluginClass = function () {
 
-var CLShareCDVPlugin = function () {
-
-	var kClassName = "CLShareCDVPlugin";
+    var kClassName = "CLShareCDVPLugin";
 
     var self = this;
-    var p    = CLShareCDVPlugin.prototype;
-    var params = [];
+    var p    = CLShareCDVPluginClass.prototype;
+    var params = {};
 
     p.SupportedSocialMedia = {
         FACEBOOK  : "shareViaFb",
-        TWITTTER  : "shareViaTwitter",
+        TWITTER  : "shareViaTwitter",
         INSTAGRAM : "shareViaInstagram"
     }
 
@@ -33,10 +34,13 @@ var CLShareCDVPlugin = function () {
     //default is facebook
     var socialMediaMethod = self.SupportedSocialMedia.FACEBOOK;
 
-	
-    p.setSocialMedia = function(socilaMediaArgs){
+    p.init = function (){
 
-        var valid =self.determineIfKeyIsValid(key, self.SupportedKeys);
+    };
+    
+    p.setSocialMedia = function(socilaMediaArgs){
+        
+        var valid =self.determineIfKeyIsValid(socilaMediaArgs, self.SupportedSocialMedia);
         
         if(valid) 
             socialMediaMethod = socilaMediaArgs;
@@ -58,18 +62,33 @@ var CLShareCDVPlugin = function () {
         return valid;
     };
 
-    p.share = function(successCallBack, errorCallback){
-    		
+    p.share = function(successCallback, errorCallback){
+            
+            if(typeof exec === 'undefined')
+            {
+                if(typeof cordova === 'undefined' || typeof cordova.exec === 'undefined')
+                {
+                     exec = function (){};
+                }else
+                {
+                    exec = cordova.exec;
+                }
+            }
+
             exec(successCallback, errorCallback, kClassName, socialMediaMethod, [params]);
     };
 
     p.addToParams = function(key, value){
         var valid =self.determineIfKeyIsValid(key, self.SupportedKeys);
         
-        if(valid) 
-            params[key] = value;
+        if(valid) params[key] = value;
 
         return valid;
 
     };
+               
+    self.init();
 }
+module.exports =   CLShareCDVPluginClass;
+
+

@@ -13,6 +13,7 @@
 #import "InstagramModule.h"
 #import "TwitterModule.h"
 @interface CLShareCDVPLugin : CDVPlugin<FacebookModuleDelegate,InstagramModuleDelegate>
+@property(nonatomic, strong) InstagramModule *instagram;
 - (void)shareViaFb:(CDVInvokedUrlCommand*)command;
 - (void)shareViaTwitter:(CDVInvokedUrlCommand*)command;
 - (void)shareViaInstagram:(CDVInvokedUrlCommand*)command;

@@ -15,6 +15,7 @@ NSString* kInstagramModuleURLScheme    = @"instagram://app";
 
 @implementation InstagramModule
 @synthesize delegate;
+
 - (void)shareInstagramWithController:(UIViewController *)controller withImageName:(NSString *)imageName
 {
     [self storeImage:imageName];
@@ -27,11 +28,11 @@ NSString* kInstagramModuleURLScheme    = @"instagram://app";
         NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@", kInstagramModuleFileName]];
         
         NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@", jpgPath]];
-        UIDocumentInteractionController *dic = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
+        self.dic = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
 
-        dic.UTI = kInstagramModuleUTI;
-        dic.delegate=self;
-        [dic presentOpenInMenuFromRect: rect    inView: controller.view animated: YES ];
+        self.dic.UTI = kInstagramModuleUTI;
+        self.dic.delegate=self;
+        [self.dic presentOpenInMenuFromRect: rect    inView: controller.view animated: YES ];
       
         //  [[UIApplication sharedApplication] openURL:instagramURL];
     }
